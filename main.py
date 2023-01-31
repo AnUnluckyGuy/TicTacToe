@@ -62,10 +62,16 @@ if __name__ == "__main__":
                 mouseY, mouseX = pygame.mouse.get_pos()
                 break
         
-        if board.checkWin() or board.checkDraw(): 
-            time.sleep(10)
-            break
+        if board.checkWin(): 
+            turn = 3
         
+        if board.checkDraw():
+            turn  = 4
+        
+        if turn >= 3:
+            display(board)
+            continue
+
         if turn == playerTurn:
             if mouseX != -1:
                 px = (mouseX - adjust_to_write_status) // cell_size
